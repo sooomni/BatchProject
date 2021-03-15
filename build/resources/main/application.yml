@@ -1,0 +1,1 @@
+spring.batch.job.names: ${job.name:NONE} # job.name? job.name : None
