@@ -1,10 +1,12 @@
 package com.batch.job;
 
 import lombok.RequiredArgsConstructor;
+import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
+import org.springframework.batch.core.configuration.annotation.JobScope;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,7 @@ public class JobConfiguration {
     }
 
     @Bean
+    @JobScope
     public Step startStep1() {
         return stepBuilderFactory.get(BATCH_NAME + " Step1")  //Builder를 통해 이름을 지정
                 .tasklet((contribution, chunkContext) -> {  //Step 안의 기능 명시
